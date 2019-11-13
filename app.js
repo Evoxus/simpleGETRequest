@@ -1,7 +1,7 @@
 'use strict';
 
-function getDogImage(numImages) {
-  fetch(`https://dog.ceo/api/breeds/image/random/${numImages}`)
+function getDogImage(breed) {
+  fetch(`https://dog.ceo/api/breed/${breed}/images/random/`, {"Access-Control-Allow-Origin": "null"})
     .then(response => response.json())
     .then(responseJson =>
       displayResults(responseJson))
@@ -10,20 +10,21 @@ function getDogImage(numImages) {
 
 function displayResults(responseJson) {
   console.log(responseJson.message);
-  let imageArray = []
-  responseJson.message.forEach(item => {
-    imageArray.push(`<img src="${item}">`);
-  });
-  console.log(imageArray);
-  $('.results').append(...imageArray);
+  if (responseJson.status === "success") {
+    let result = `<img src="${responseJson.message}"`
+    $('.results').append(result);
+  } else {
+    $('.results').append(`We're sorry but we had some trouble.`)
+    console.log(responseJson.message, responseJson.status);
+  }
 }
 
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    let numImages = $('#numImages').val();
-    $('#numImages').val('3');
-    getDogImage(numImages);
+    let breed = $('#breed').val();
+    $('#breed').val('');
+    getDogImage(breed);
   });
 }
 
