@@ -13,10 +13,7 @@ body {
 }
 
 img {
-    max-width: 550px;
+    max-width: 100px;
     height: auto;
-}
-
-.hidden {
-    display: none;
+    margin: 10px;
 }

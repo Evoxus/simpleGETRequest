@@ -10,6 +10,12 @@ function getDogImage(numImages) {
 
 function displayResults(responseJson) {
   console.log(responseJson.message);
+  let imageArray = []
+  responseJson.message.forEach(item => {
+    imageArray.push(`<img src="${item}">`);
+  });
+  console.log(imageArray);
+  $('.results').append(...imageArray);
 }
 
 function watchForm() {
