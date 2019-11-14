@@ -16,4 +16,10 @@ img {
     max-width: 100px;
     height: auto;
     margin: 10px;
+    transition-duration: 200ms;
+}
+
+img:hover {
+    transform: scale(2) translate(100px, 100px);
+    transition-duration: 200ms;
 }
