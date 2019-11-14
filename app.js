@@ -15,6 +15,7 @@ function displayResults(responseJson) {
     imageArray.push(`<img src="${item}">`);
   });
   console.log(imageArray);
+  $('.results').html('');
   $('.results').append(...imageArray);
 }
 
